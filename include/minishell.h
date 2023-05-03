@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/02 14:41:40 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:09:23 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,9 @@ void	ft_add_back(t_token **token, t_token *new);
 int		check_out(char *line);
 int		check_in(char *line);
 int		check_pipe(char *line);
+
+//alias handler
+
+void	alias_replacer(t_token **token);
 
 #endif

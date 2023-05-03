@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/02 16:12:58 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:31:53 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,8 @@ int	token_length(char *line)
 			exit(EXIT_FAILURE);
 		}
 	}
-	if (check_in(line))
-		return (check_in(line));
-	if (check_out(line))
-		return (check_out(line));
-	if (check_pipe(line))
-		return (check_pipe(line));
+	if (check_in(line) || check_out(line) || check_pipe(line))
+		return (check_in(line) || check_out(line) || check_pipe(line));
 	while (line[i] && !is_operator(line[i]) && !is_quote(line[i]) && line[i] \
 	!= ' ')
 		i++;
@@ -91,11 +87,16 @@ void	parse(char	*line)
 	token = malloc(sizeof(t_token **) * 1);
 	*token = NULL;
 	tokenizer(line, token);
-	printf("test\n\n");
+	//pour sortir clean dans mes tests.
+	if (!strcmp((*token)->tokens, "exit"))
+		exit(EXIT_SUCCESS);
+	//balise
+	alias_replacer(token);
+	printf("parsing :\n\n");
 	while (*token)
 	{
 		printf("%s\n", (*token)->tokens);
 		*token = (*token)->next;
 	}
-	//alias_replacer(data);
+	//here: a function that analyze the type of token
 }

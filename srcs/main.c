@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:18:42 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/02 15:56:40 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:59:04 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 void	minishell(t_data *data)
 {
 	char	*line;
-	// while (1)
-	// {
+	while (1)
+	{
 		data->line_readline = readline("$>   ");
-		parse(data->line_readline);
-		// execute();
+		if (data->line_readline[0] != '\0')
+		{
+			parse(data->line_readline);
+			// execute();
+		}
 		free(data->line_readline);
-	// }
+	}
 }
 
 int	main(int ac, char **av, char **env)
