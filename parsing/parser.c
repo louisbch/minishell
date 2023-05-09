@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/03 14:31:53 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:51:36 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,24 @@ int	token_length(char *line)
 	int	quote;
 
 	i = 0;
-	quote = is_quote(line[i]);
-	while (quote && line[i])
-	{
-		i++;
-		if (is_quote(line[i]) == quote)
-			return (i + 1);
-		if (!line[i])
-		{
-			printf("error, %c is not closed\n", line[0]);
-			exit(EXIT_FAILURE);
-		}
-	}
 	if (check_in(line) || check_out(line) || check_pipe(line))
 		return (check_in(line) || check_out(line) || check_pipe(line));
-	while (line[i] && !is_operator(line[i]) && !is_quote(line[i]) && line[i] \
-	!= ' ')
+	while (line[i] && !is_operator(line[i]) && line[i] != ' ')
+	{
+		quote = is_quote(line[i]);
+		while (quote && line[i])
+		{
+			i++;
+			if (is_quote(line[i]) == quote)
+				break ;
+			if (!line[i])
+			{
+				printf("error, %c is not closed\n", line[0]);
+				exit(EXIT_FAILURE);
+			}
+		}
 		i++;
+	}
 	return (i);
 }
 
