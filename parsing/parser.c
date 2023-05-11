@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/09 11:51:36 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:04:58 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ int	token_length(char *line)
 		{
 			i++;
 			if (is_quote(line[i]) == quote)
+			{
 				break ;
+			}
 			if (!line[i])
 			{
-				printf("error, %c is not closed\n", line[0]);
+				printf("error, %c is not closed\n", quote);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -49,13 +51,13 @@ t_token	*new_token(char *line, int *nb_char)
 	if (!new)
 		return (NULL);
 	*nb_char = token_length(line);
-	new->tokens = malloc(*nb_char + 1);
+	new->token_s = malloc(*nb_char + 1);
 	while (i < *nb_char)
 	{
-		new->tokens[i] = line[i];
+		new->token_s[i] = line[i];
 		i++;
 	}
-	new->tokens[i] = '\0';
+	new->token_s[i] = '\0';
 	new->type = 0;
 	new->next = NULL;
 	return (new);
@@ -89,14 +91,14 @@ void	parse(char	*line)
 	*token = NULL;
 	tokenizer(line, token);
 	//pour sortir clean dans mes tests.
-	if (!strcmp((*token)->tokens, "exit"))
+	if (!strcmp((*token)->token_s, "exit"))
 		exit(EXIT_SUCCESS);
 	//balise
 	alias_replacer(token);
 	printf("parsing :\n\n");
 	while (*token)
 	{
-		printf("%s\n", (*token)->tokens);
+		printf("%s\n", (*token)->token_s);
 		*token = (*token)->next;
 	}
 	//here: a function that analyze the type of token

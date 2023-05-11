@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/03 14:09:23 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:15:43 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,17 @@ typedef struct s_data
 
 typedef struct s_token
 {
-	char				*tokens;
+	char				*token_s;
 	int					type;
 	struct s_token		*next;
 }	t_token;
+
+typedef struct s_env
+{
+	char			*name;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
 
 /*PARSING*/
 
@@ -58,5 +65,7 @@ int		check_pipe(char *line);
 //alias handler
 
 void	alias_replacer(t_token **token);
+void	trunc_quote(t_token *token, int i, int j);
+
 
 #endif
