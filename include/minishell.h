@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 11:15:43 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:46:28 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
-typedef struct s_data
-{
-	char	*line_readline;
-	char	*line_with_space;
-}	t_data;
 
 typedef struct s_token
 {
@@ -42,8 +36,6 @@ typedef struct s_env
 }	t_env;
 
 /*PARSING*/
-
-//
 
 void	parse(char	*line);
 
@@ -67,5 +59,11 @@ int		check_pipe(char *line);
 void	alias_replacer(t_token **token);
 void	trunc_quote(t_token *token, int i, int j);
 
+//env
+char	**ft_split(const char *s, char c);
+t_env	**init_env(char **envp);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_itoa(int n);
+int		ft_atoi(const char *str);
 
 #endif

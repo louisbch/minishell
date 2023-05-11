@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:27:22 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/02 15:24:54 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:11:36 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,22 @@ void	*ft_calloc(size_t count, size_t size)
 		return (0);
 	ft_bzero(dst, count * size);
 	return (dst);
+}
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < n && src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }

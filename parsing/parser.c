@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/09 14:04:58 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:08:23 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_token	*new_token(char *line, int *nb_char)
 	return (new);
 }
 
-t_token	*tokenizer(char	*line, t_token **token)
+void	tokenizer(char	*line, t_token **token)
 {
 	int		i;
 	int		*nb_char;
@@ -88,6 +88,8 @@ void	parse(char	*line)
 	t_token	**token;
 
 	token = malloc(sizeof(t_token **) * 1);
+	if (!token)
+		return ;
 	*token = NULL;
 	tokenizer(line, token);
 	//pour sortir clean dans mes tests.
