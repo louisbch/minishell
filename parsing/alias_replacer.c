@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:58:12 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 11:11:19 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:58:17 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	expander(t_token *token)
 	i = 0;
 }
 
-void	alias_replacer(t_token **token)
+void	alias_replacer(t_token **token, t_env **env)
 {
 	t_token	*tmp;
 

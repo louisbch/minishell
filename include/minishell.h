@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 12:46:28 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:57:33 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_env
 
 /*PARSING*/
 
-void	parse(char	*line);
+void	parse(char	*line, t_env **env);
 
 //		utils
 
@@ -56,7 +56,7 @@ int		check_pipe(char *line);
 
 //alias handler
 
-void	alias_replacer(t_token **token);
+void	alias_replacer(t_token **token, t_env **env);
 void	trunc_quote(t_token *token, int i, int j);
 
 //env
@@ -65,5 +65,10 @@ t_env	**init_env(char **envp);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
+
+/*BUILTIN*/
+
+void	echo(char **s);
+void	env(t_env **env);
 
 #endif

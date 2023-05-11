@@ -1,43 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 13:18:42 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 13:03:15 by mcourtin         ###   ########.fr       */
+/*   Created: 2023/05/11 12:53:03 by mcourtin          #+#    #+#             */
+/*   Updated: 2023/05/11 13:03:33 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/minishell.h"
+#include "../include/minishell.h"
 
-void	minishell(t_env **my_env)
+void	env(t_env **env)
 {
-	char	*line;
-
-	while (1)
+	while (*env)
 	{
-		line = readline("$>   ");
-		if (line[0] != '\0')
-		{
-			parse(line, my_env);
-			// execute();
-		}
-		free(line);
+		printf("%s", (*env)->name);
+		printf("=%s\n", (*env)->value);
+		*env = (*env)->next;
 	}
-}
-
-int	main(int ac, char **av, char **envp)
-{
-	t_env	**my_env;
-
-	(void)av;
-	if (ac != 1)
-		return (0);
-	my_env = init_env(envp);
-	minishell(my_env);
-	//free tout
-	// line = readline("$>");
-	return (0);
 }

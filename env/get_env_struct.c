@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:13:49 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 12:25:45 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:02:26 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,24 @@ t_env	*new_env(char *envp)
 	return (new);
 }
 
-void	add_env_back(t_env **env, t_env *new)
+void	add_env_back(t_env **my_env, t_env *new)
 {
 	t_env	*tmp;
 
-	if (!env || !new)
+	if (!my_env || !new)
 		return ;
-	if (!*env)
-		*env = new;
+	if (!*my_env)
+		*my_env = new;
 	else
 	{
-		tmp = *env;
+		tmp = *my_env;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
 }
 
-void	env_maker(t_env **env, char **envp)
+void	env_maker(t_env **my_env, char **envp)
 {
 	int		i;
 	t_env	*new;
@@ -70,26 +70,20 @@ void	env_maker(t_env **env, char **envp)
 	while (envp[i])
 	{
 		new = new_env(envp[i]);
-		add_env_back(env, new);
+		add_env_back(my_env, new);
 		i++;
 	}
 }
 
 t_env	**init_env(char **envp)
 {
-	t_env	**env;
+	t_env	**my_env;
 
-	env = malloc(sizeof(t_env *));
-	if (!env)
+	my_env = malloc(sizeof(t_env *));
+	if (!my_env)
 		return (NULL);
-	*env = NULL;
-	env_maker(env, envp);
-	printf("env maker :\n\n");
-	while (*env)
-	{
-		printf("%s", (*env)->name);
-		printf("=%s\n", (*env)->value);
-		*env = (*env)->next;
-	}
-	return (env);
+	*my_env = NULL;
+	env_maker(my_env, envp);
+	env(my_env);
+	return (my_env);
 }
