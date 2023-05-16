@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 16:27:53 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/16 15:00:08 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:43:37 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,21 @@ int	ft_wordlen(const char *str)
 
 	i = 0;
 	j = i;
-	while (str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && \
-	str[i] != '\r' && str[i] != '\f' && str[i] != '\v' && str[i] != '$' )
+	while (str[i] && ft_isalnum(str[i]))
 		i++;
 	if (is_quote(str[i - 1]) && i > 0)
 		return (i - 1);
 	return (i);
 }
+
+int	ft_isalnum(int c)
+{
+	if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')
+		|| (c >= 'a' && c <= 'z') || c == '_')
+		return (1);
+	return (0);
+}
+
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -40,24 +48,6 @@ int	ft_strcmp(char *s1, char *s2)
 			return (s1[i] - s2[i]);
 	}
 	return (0);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	size_t	i;
-	char	*dst;
-
-	i = 0;
-	dst = malloc(sizeof(char) * ft_strlen(s1) + 1);
-	if (!dst)
-		return (0);
-	while (s1[i])
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
 }
 
 char	*ft_strcat(char *dest, char *src)

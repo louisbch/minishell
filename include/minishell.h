@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/16 13:19:07 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:42:22 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int		ft_wordlen(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 int		is_operator(char c);
 int		is_quote(char c);
+int		ft_isalnum(int c);
 void	ft_add_back(t_token **token, t_token *new);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *s1);
 char	*ft_strcat(char *dest, char *src);
 char	*ft_strcpy(char *dest, char *src);
 
