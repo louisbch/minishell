@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:18:42 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 13:48:15 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:53:48 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void	minishell(t_env **my_env)
 			parse(line, my_env);
 			// execute();
 		}
+		add_history(line);
 		free(line);
 	}
+	rl_clear_history();
 }
 
 int	main(int ac, char **av, char **envp)
