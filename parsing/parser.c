@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 13:02:52 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:37:36 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,6 @@ void	parse(char	*line, t_env **my_env)
 		return ;
 	*token = NULL;
 	tokenizer(line, token);
-	//pour sortir clean dans mes tests.
-	if (!strcmp((*token)->token_s, "exit"))
-		exit(EXIT_SUCCESS);
-	//balise
 	alias_replacer(token, my_env);
 	printf("parsing :\n\n");
 	while (*token)

@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:13:49 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 14:10:29 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:04:17 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_env	**init_env(char **envp)
 		return (NULL);
 	*my_env = NULL;
 	env_maker(my_env, envp);
-	//test avec le builtine
-	env(my_env);
+	//test avec le builtin
+	//env(my_env);
 	return (my_env);
 }

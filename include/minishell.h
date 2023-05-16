@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 12:57:33 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:19:07 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,15 @@ void	parse(char	*line, t_env **env);
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 size_t	ft_strlen(const char *s);
+int		ft_wordlen(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 int		is_operator(char c);
 int		is_quote(char c);
 void	ft_add_back(t_token **token, t_token *new);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
+char	*ft_strcat(char *dest, char *src);
+char	*ft_strcpy(char *dest, char *src);
 
 //		check operator
 
@@ -63,6 +68,7 @@ void	trunc_quote(t_token *token, int i, int j);
 char	**ft_split(const char *s, char c);
 t_env	**init_env(char **envp);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(char *s1, char *s2);
 char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
 

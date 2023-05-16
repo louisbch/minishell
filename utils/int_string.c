@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:16:26 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 12:23:17 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:41:30 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,21 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 			return (str1[i] - str2[i]);
 		i++;
 	}
+	return (0);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char) c)
+			return ((char *) &s[i]);
+		i++;
+	}
+	if ((char) c == '\0' && s[i] == '\0')
+		return ((char *) &s[i]);
 	return (0);
 }
