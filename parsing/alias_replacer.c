@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:58:12 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/16 14:29:15 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:40:16 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ char	*get_value(t_env **my_env, char *name)
 	return (NULL);
 }
 
-void	replace_word(t_token *token, int word_length, char *value, char *word_end, char *dollar)
+void	replace_word(t_token *token, char *value, char *word_end, char *dollar)
 {
 	char	*replace;
 	int		total_length;
+	int		word_length;
 
+	word_length = ft_wordlen(dollar + 1);
 	total_length = ft_strlen(token->token_s) + ft_strlen(value) - word_length;
 	replace = ft_calloc(total_length + 1, 1);
 	if (!replace)
@@ -64,7 +66,7 @@ int	replace_dollar(t_token *token, t_env **my_env)
 		if (!value)
 			return (0);
 	}
-	replace_word(token, word_length, value, word_end, dollar);
+	replace_word(token, value, word_end, dollar);
 	free (word);
 	return (ft_strlen(value));
 }
@@ -85,7 +87,13 @@ void	expander(t_token *token, t_env **my_env)
 				i++;
 		}
 		if (token->token_s[i] == '$')
-			i += replace_dollar(token, my_env) - 1;
+		{
+			//to do
+			// if (ft_strncmp(token->token_s + i, "$?", 2))
+			// 	i += replace_last_signal(token);
+			//else
+				i += replace_dollar(token, my_env) - 1;
+		}
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/16 13:37:36 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:29:26 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ t_token	*new_token(char *line, int *nb_char)
 		return (NULL);
 	*nb_char = token_length(line);
 	new->token_s = malloc(*nb_char + 1);
+	if (!new->token_s)
+		return (NULL);
 	while (i < *nb_char)
 	{
 		new->token_s[i] = line[i];
@@ -71,6 +73,8 @@ void	tokenizer(char	*line, t_token **token)
 
 	i = 0;
 	nb_char = malloc(sizeof(int));
+	if (!nb_char)
+		return ;
 	while (line[i])
 	{
 		while (line[i] == ' ')

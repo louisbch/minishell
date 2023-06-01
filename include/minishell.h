@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/16 15:42:22 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:45:25 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	parse(char	*line, t_env **env);
 
 //		utils
 
+t_env	*new_env(char *envp);
+void	add_env_back(t_env **my_env, t_env *new);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 size_t	ft_strlen(const char *s);
 int		ft_wordlen(const char *str);
@@ -76,5 +78,7 @@ int		ft_atoi(const char *str);
 
 void	echo(char **s);
 void	env(t_env **env);
+void	export(char *str, t_env **my_env);
+void	unset(char *name, t_env **my_env);
 
 #endif

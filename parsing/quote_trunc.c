@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:25:53 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 10:26:13 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:22:47 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	trunc_quote(t_token *token, int i, int j)
 	char	*trunc;
 
 	trunc = malloc(trunc_length(token) + 1);
+	if (!trunc)
+		return ;
 	while (token->token_s[i])
 	{
 		quote = is_quote(token->token_s[i]);

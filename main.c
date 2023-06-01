@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:18:42 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/16 15:53:48 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/01 13:23:54 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int ac, char **av, char **envp)
 	if (ac != 1)
 		return (0);
 	my_env = init_env(envp);
+	//env(my_env);
 	minishell(my_env);
 	//free tout
 	// line = readline("$>");
