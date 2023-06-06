@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/01 11:45:25 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:50:29 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+extern int	g_signal;
 
 typedef struct s_token
 {
@@ -54,6 +56,7 @@ void	ft_add_back(t_token **token, t_token *new);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strcat(char *dest, char *src);
 char	*ft_strcpy(char *dest, char *src);
+int		replace_by_signal(t_token *token);
 
 //		check operator
 

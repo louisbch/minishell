@@ -6,11 +6,13 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:18:42 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/01 13:23:54 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/06 10:32:18 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
+
+int	g_signal;
 
 void	minishell(t_env **my_env)
 {
