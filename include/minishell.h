@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/07 15:08:36 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:22:55 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_token
 {
 	char				*token_s;
 	int					type;
+	int					error;
 	struct s_token		*next;
 	struct s_token		*previous;
 }	t_token;
@@ -41,8 +42,9 @@ typedef struct s_env
 
 /*PARSING*/
 
-void	parse(char	*line, t_env **env);
+int		parse(char	*line, t_env **env);
 void	double_link(t_token **token);
+void	free_token(t_token **token);
 
 //		utils
 
@@ -63,9 +65,10 @@ int		replace_by_signal(t_token *token);
 
 //		check operator
 
-int		check_out(char *line);
-int		check_in(char *line);
-int		check_pipe(char *line);
+int		check_op_len(char *line, t_token *token);
+int		check_out(char *line, t_token *token);
+int		check_in(char *line, t_token *token);
+int		check_pipe(char *line, t_token *token);
 
 //alias handler
 

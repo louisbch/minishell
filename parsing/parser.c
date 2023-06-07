@@ -6,20 +6,20 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/07 15:07:55 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:20:24 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	token_length(char *line)
+int	token_length(char *line, t_token *token)
 {
 	int	i;
 	int	quote;
 
 	i = 0;
-	if (check_in(line) || check_out(line) || check_pipe(line))
-		return (check_in(line) || check_out(line) || check_pipe(line));
+	if (check_op_len(line, token))
+		return (check_op_len(line, token));
 	while (line[i] && !is_operator(line[i]) && line[i] != ' ')
 	{
 		quote = is_quote(line[i]);
@@ -27,13 +27,12 @@ int	token_length(char *line)
 		{
 			i++;
 			if (is_quote(line[i]) == quote)
-			{
 				break ;
-			}
 			if (!line[i])
 			{
+				token->error = 1;
 				printf("error, %c is not closed\n", quote);
-				exit(EXIT_FAILURE);
+				return (1);
 			}
 		}
 		i++;
@@ -50,8 +49,14 @@ t_token	*new_token(char *line, int *nb_char)
 	new = malloc(sizeof(t_token));
 	if (!new)
 		return (NULL);
-	*nb_char = token_length(line);
-	new->token_s = malloc(*nb_char + 1);
+	new->error = 0;
+	*nb_char = token_length(line, new);
+	if (new->error == 1)
+	{
+		free(new);
+		return (NULL);
+	}
+	new->token_s = ft_calloc(1, *nb_char + 1);
 	if (!new->token_s)
 		return (NULL);
 	while (i < *nb_char)
@@ -59,13 +64,12 @@ t_token	*new_token(char *line, int *nb_char)
 		new->token_s[i] = line[i];
 		i++;
 	}
-	new->token_s[i] = '\0';
 	new->type = 0;
 	new->next = NULL;
 	return (new);
 }
 
-void	tokenizer(char	*line, t_token **token)
+int	tokenizer(char	*line, t_token **token)
 {
 	int		i;
 	int		*nb_char;
@@ -74,35 +78,43 @@ void	tokenizer(char	*line, t_token **token)
 	i = 0;
 	nb_char = malloc(sizeof(int));
 	if (!nb_char)
-		return ;
+		return (1);
 	while (line[i])
 	{
 		while (line[i] == ' ')
 			i++;
 		new = new_token(&line[i], nb_char);
 		if (!new)
-			return ;
+		{
+			free (nb_char);
+			free_token(token);
+			return (1);
+		}
 		ft_add_back(token, new);
 		i += *nb_char;
 	}
+	free(nb_char);
+	return (0);
 }
 
-void	parse(char	*line, t_env **my_env)
+int	parse(char	*line, t_env **my_env)
 {
 	t_token	**token;
 
 	token = malloc(sizeof(t_token **) * 1);
 	if (!token)
-		return ;
+		return (1);
 	*token = NULL;
-	tokenizer(line, token);
+	if (tokenizer(line, token))
+		return (1);
 	double_link(token);
 	alias_replacer(token, my_env);
-	// printf("parsing :\n\n");
-	// while (*token)
-	// {
-	// 	printf("%s\n", (*token)->token_s);
-	// 	*token = (*token)->next;
-	// }
+	printf("\nparsing :\n");
+	while (*token)
+	{
+		printf("%s\n", (*token)->token_s);
+		*token = (*token)->next;
+	}
 	//here: a function that analyze the type of token
+	return (0);
 }

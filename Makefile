@@ -6,7 +6,7 @@
 #    By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/28 11:40:33 by mcourtin          #+#    #+#              #
-#    Updated: 2023/06/06 15:55:14 by mcourtin         ###   ########.fr        #
+#    Updated: 2023/06/07 17:22:44 by mcourtin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS =	main.c parsing/parser.c utils/calloc.c parsing/check_operator.c \
 		parsing/quote_trunc.c utils/ft_split.c env/get_env_struct.c \
 		utils/int_string.c builtin/echo.c builtin/env.c utils/utilitaire.c \
 		builtin/export.c builtin/unset.c parsing/replace_signal_value.c \
-		builtin/pwd.c builtin/cd.c
+		builtin/pwd.c builtin/cd.c parsing/free.c
 		
 OBJS = $(SRCS:.c=.o)
 
