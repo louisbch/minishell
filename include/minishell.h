@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/06 10:50:29 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/07 15:08:36 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 
 # include <unistd.h>
 # include <stdio.h>
+# include <signal.h>
 # include <stdbool.h>
 # include <sys/wait.h>
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
-extern int	g_signal;
+int	g_signal;
 
 typedef struct s_token
 {
 	char				*token_s;
 	int					type;
 	struct s_token		*next;
+	struct s_token		*previous;
 }	t_token;
 
 typedef struct s_env
@@ -40,6 +42,7 @@ typedef struct s_env
 /*PARSING*/
 
 void	parse(char	*line, t_env **env);
+void	double_link(t_token **token);
 
 //		utils
 
@@ -83,5 +86,7 @@ void	echo(char **s);
 void	env(t_env **env);
 void	export(char *str, t_env **my_env);
 void	unset(char *name, t_env **my_env);
+void	pwd(void);
+void	cd(char *path);
 
 #endif

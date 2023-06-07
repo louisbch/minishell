@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/01 13:29:26 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/07 15:07:55 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	tokenizer(char	*line, t_token **token)
 			i++;
 		new = new_token(&line[i], nb_char);
 		if (!new)
-			printf("error\n");
+			return ;
 		ft_add_back(token, new);
 		i += *nb_char;
 	}
@@ -96,12 +96,13 @@ void	parse(char	*line, t_env **my_env)
 		return ;
 	*token = NULL;
 	tokenizer(line, token);
+	double_link(token);
 	alias_replacer(token, my_env);
-	printf("parsing :\n\n");
-	while (*token)
-	{
-		printf("%s\n", (*token)->token_s);
-		*token = (*token)->next;
-	}
+	// printf("parsing :\n\n");
+	// while (*token)
+	// {
+	// 	printf("%s\n", (*token)->token_s);
+	// 	*token = (*token)->next;
+	// }
 	//here: a function that analyze the type of token
 }

@@ -6,13 +6,11 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:18:42 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/06 10:32:18 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:45:28 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/minishell.h"
-
-int	g_signal;
 
 void	minishell(t_env **my_env)
 {
@@ -40,9 +38,7 @@ int	main(int ac, char **av, char **envp)
 	if (ac != 1)
 		return (0);
 	my_env = init_env(envp);
-	//env(my_env);
 	minishell(my_env);
 	//free tout
-	// line = readline("$>");
 	return (0);
 }

@@ -6,11 +6,26 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:26:09 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/05/11 12:11:31 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/07 15:11:26 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+void	double_link(t_token **token)
+{
+	t_token	*tmp;
+	t_token	*prev;
+
+	prev = NULL;
+	tmp = *token;
+	while (tmp)
+	{
+		tmp->previous = prev;
+		tmp = tmp->next;
+		prev = tmp;
+	}
+}
 
 int	is_quote(char c)
 {
