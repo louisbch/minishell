@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/07 17:22:55 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/08 14:57:52 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+# define CMD 0
+# define PIPE 1
+# define O_FILE 2
+# define I_FILE 3
+# define HERE 4
+# define APP 5
 
 int	g_signal;
 
@@ -45,6 +52,7 @@ typedef struct s_env
 int		parse(char	*line, t_env **env);
 void	double_link(t_token **token);
 void	free_token(t_token **token);
+void	get_token_type(t_token **token);
 
 //		utils
 

@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/07 17:20:24 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/08 14:58:15 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,13 @@ int	parse(char	*line, t_env **my_env)
 	if (tokenizer(line, token))
 		return (1);
 	double_link(token);
+	get_token_type(token);
 	alias_replacer(token, my_env);
-	printf("\nparsing :\n");
-	while (*token)
-	{
-		printf("%s\n", (*token)->token_s);
-		*token = (*token)->next;
-	}
-	//here: a function that analyze the type of token
+	// printf("\nparsing :\n");
+	// while (*token)
+	// {
+	// 	printf("%s\n", (*token)->token_s);
+	// 	*token = (*token)->next;
+	// }
 	return (0);
 }

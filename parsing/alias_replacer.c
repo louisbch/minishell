@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:58:12 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/06 10:46:39 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/08 14:50:32 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	expander(t_token *token, t_env **my_env)
 		}
 		if (token->token_s[i] == '$')
 		{
-			if (ft_strncmp(token->token_s + i, "$?", 2))
+			if (!ft_strncmp(token->token_s + i, "$?", 2))
 				i += replace_by_signal(token);
 			else
 				i += replace_dollar(token, my_env) - 1;
