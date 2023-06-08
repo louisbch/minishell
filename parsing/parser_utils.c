@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:26:09 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/08 15:01:55 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:02:51 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	double_link(t_token **token)
 	while (tmp)
 	{
 		tmp->previous = prev;
-		tmp = tmp->next;
 		prev = tmp;
+		tmp = tmp->next;
 	}
 }
 

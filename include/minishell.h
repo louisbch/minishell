@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/08 14:57:52 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:19:25 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		parse(char	*line, t_env **env);
 void	double_link(t_token **token);
 void	free_token(t_token **token);
 void	get_token_type(t_token **token);
+int		check_input(t_token **token);
 
 //		utils
 
