@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:26:09 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/08 14:57:38 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:01:55 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	get_token_type(t_token **token)
 	{
 		if (!ft_strcmp(tmp->token_s, ">>"))
 			tmp->type = APP;
-		if (!ft_strcmp(tmp->token_s, "<<"))
+		else if (!ft_strcmp(tmp->token_s, "<<"))
 			tmp->type = HERE;
-		if (!ft_strcmp(tmp->token_s, "<"))
+		else if (!ft_strcmp(tmp->token_s, "<"))
 			tmp->type = I_FILE;
-		if (!ft_strcmp(tmp->token_s, ">"))
+		else if (!ft_strcmp(tmp->token_s, ">"))
 			tmp->type = O_FILE;
-		if (!ft_strcmp(tmp->token_s, "|"))
+		else if (!ft_strcmp(tmp->token_s, "|"))
 			tmp->type = PIPE;
 		else
 			tmp->type = CMD;

@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/08 14:58:15 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:02:50 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,10 @@ int	parse(char	*line, t_env **my_env)
 	double_link(token);
 	get_token_type(token);
 	alias_replacer(token, my_env);
-	// printf("\nparsing :\n");
+	printf("\nparsing :\n");
 	// while (*token)
 	// {
+	// 	printf(" %d\t", (*token)->type);
 	// 	printf("%s\n", (*token)->token_s);
 	// 	*token = (*token)->next;
 	// }
