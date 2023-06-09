@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 11:49:34 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/07 17:04:10 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:55:12 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 int	check_op_len(char *line, t_token *token)
 {
-	if (token->error == 1)
-		return (1);
 	if (check_in(line, token))
-		return (check_in(line, token));
+		return (1);
 	else if (check_out(line, token))
-		return (check_out(line, token));
+		return (1);
 	else if (check_pipe(line, token))
-		return (check_pipe(line, token));
+		return (1);
 	return (0);
 }
 
@@ -34,8 +32,7 @@ int	check_in(char *line, t_token *token)
 		i++;
 	if (i > 2)
 	{
-		if (token->error == 1)
-			printf("parse error near '<'\n");
+		printf("parse error near '<'\n");
 		token->error = 1;
 	}
 	return (i);
@@ -50,8 +47,7 @@ int	check_out(char *line, t_token *token)
 		i++;
 	if (i > 2)
 	{
-		if (token->error == 1)
-			printf("parse error near '>'\n");
+		printf("parse error near '>'\n");
 		token->error = 1;
 	}
 	return (i);
@@ -66,8 +62,7 @@ int	check_pipe(char *line, t_token *token)
 		i++;
 	if (i > 1)
 	{
-		if (token->error == 1)
-			printf("parse error near '|'\n");
+		printf("parse error near '|'\n");
 		token->error = 1;
 	}
 	return (i);

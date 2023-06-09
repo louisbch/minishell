@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/09 13:19:49 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:55:44 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	token_length(char *line, t_token *token)
 
 	i = 0;
 	if (check_op_len(line, token))
-		return (check_op_len(line, token));
+		return (1);
 	while (line[i] && !is_operator(line[i]) && line[i] != ' ')
 	{
 		quote = is_quote(line[i]);
