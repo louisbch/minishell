@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/08 17:24:13 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:19:49 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int	parse(char	*line, t_env **my_env)
 		free_token(token);
 		return (1);
 	}
+	//        test
 	// printf("\nparsing :\n");
 	// while (*token)
 	// {

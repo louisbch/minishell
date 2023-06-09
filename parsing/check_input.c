@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:18:18 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/08 16:04:04 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:18:58 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_token_multiple_operator(t_token **token)
 	int		verif;
 
 	tmp = *token;
-	if (tmp->type > 1)
+	if (tmp->type > 1 && !tmp->next)
 	{
 		printf("parse error near '%s'\n", tmp->token_s);
 		return (1);
