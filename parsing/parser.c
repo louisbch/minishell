@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/12 10:08:24 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:03:47 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ int	token_length(char *line, t_token *token)
 {
 	int	i;
 	int	quote;
+	int	ope_len;
 
 	i = 0;
-	if (check_op_len(line, token))
-		return (check_op_len(line, token));
+	ope_len = check_op_len(line, token);
+	if (ope_len)
+		return (ope_len);
 	while (line[i] && !is_operator(line[i]) && line[i] != ' ')
 	{
 		quote = is_quote(line[i]);
@@ -32,7 +34,6 @@ int	token_length(char *line, t_token *token)
 			{
 				token->error = 1;
 				printf("error, %c is not closed\n", quote);
-				return (1);
 			}
 		}
 		i++;
