@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:18:42 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/07 17:05:40 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/12 10:10:08 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 void	minishell(t_env **my_env)
 {
 	char	*line;
-	int		exec;
+	t_token	**token;
 
 	while (1)
 	{
 		line = readline("$>   ");
 		if (line[0] != '\0')
 		{
-			exec = parse(line, my_env);
-			if (!exec)
+			token = parse(line, my_env);
+			if (token)
 			{
 				// execute();
+				free_token(token);
 			}
 		}
 		add_history(line);

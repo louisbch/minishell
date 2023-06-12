@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/12 10:04:01 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/12 10:08:47 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_env
 
 /*PARSING*/
 
-int		parse(char	*line, t_env **env);
+t_token	**parse(char	*line, t_env **env);
 void	double_link(t_token **token);
 void	free_token(t_token **token);
 void	get_token_type(t_token **token);

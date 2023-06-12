@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:21:06 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/12 10:04:22 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/12 10:08:24 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,23 +109,23 @@ void	test_function_print_token(t_token **token)
 	}
 }
 
-int	parse(char	*line, t_env **my_env)
+t_token	**parse(char *line, t_env **my_env)
 {
 	t_token	**token;
 
 	token = malloc(sizeof(t_token **) * 1);
 	if (!token)
-		return (1);
+		return (NULL);
 	*token = NULL;
 	if (tokenizer(line, token))
-		return (1);
+		return (NULL);
 	double_link(token);
 	get_token_type(token);
 	alias_replacer(token, my_env);
 	if (check_input(token))
 	{
 		free_token(token);
-		return (1);
+		return (NULL);
 	}
 	//test_function_print_token(token);
 	return (0);
