@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:24:48 by mcourtin          #+#    #+#             */
-/*   Updated: 2023/06/09 13:05:05 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/12 10:04:01 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,8 @@ void	export(char *str, t_env **my_env);
 void	unset(char *name, t_env **my_env);
 void	pwd(void);
 void	cd(char *path);
+
+//test
+void	test_function_print_token(t_token **token);
 
 #endif
