@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:01:34 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/06/23 16:20:18 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:07:07 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,13 @@ char	*join_path(t_token *token, char **path, t_env **my_env)
 	{
 		ft_putstr_fd(token->token_s, 2);
 		ft_putstr_fd(": No such file or directory\n", 2);
-		g_signal.val = 127;
 		return (NULL);
 	}
 	while (path[++i])
 	{
 		cmd_path = ft_strjoin(path[i], token->token_s);
 		if (access(cmd_path, X_OK | F_OK) == 0)
-		{
-			g_signal.val = 0;
 			return (cmd_path);
-		}
 		free(cmd_path);
 	}
 	return (NULL);
@@ -117,7 +113,7 @@ int	do_execution(t_global *global, t_env **my_env, t_token **token)
 	if (built != 1)
 		execute(cmd, global, mred);
 	ft_free_all(global, mred, cmd);
-	if (g_signal.exit != 0 && g_signal.exit != -1)
+	if (g_signal.exit != -2 && g_signal.exit != -1)
 		d_exit(my_env, g_signal.exit, global);
 	if (g_signal.exit == -1)
 		d_exit(my_env, EXIT_SUCCESS, global);

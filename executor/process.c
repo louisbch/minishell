@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 12:51:01 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/06/23 17:16:48 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:21:22 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	child_process(t_global *global, t_cmd *cmd, int i, t_mred *mred)
 	if (cmd->builts && !cmd->cmd)
 	{
 		g_signal.val = exec_builtins(cmd, global);
+		exit(g_signal.val);
 	}
 	if (!cmd->cmd_path && cmd->cmd && mred->fd_in != -2)
 	{
@@ -55,7 +56,7 @@ void	child_process(t_global *global, t_cmd *cmd, int i, t_mred *mred)
 			ft_putstr_fd(cmd->cmd, 2);
 			write(2, "\n", 1);
 		}
-		exit(EXIT_FAILURE);
+		exit(127);
 	}
 	if (execve(cmd->cmd_path, cmd->args, global->envp) == -1)
 		exit(EXIT_FAILURE);

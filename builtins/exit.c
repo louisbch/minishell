@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:36:17 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/06/23 12:25:12 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:59:16 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,13 @@ int	get_exit_code(char *s)
 {
 	unsigned int	i;
 
-	i = ft_atoi(s);
+	if ((ft_strcmp(s, "-9223372036854775808") > 0 && ft_strlen(s) >= \
+	ft_strlen("-9223372036854775808")) || (ft_strcmp(s, "9223372036854775807") \
+	> 0 && ft_strlen(s) >= ft_strlen("9223372036854775808")))
+	{
+		printf("exit: %s: numeric argument required\n", s);
+		return (255);
+	}
 	i = i << 24;
 	i = i >> 24;
 	return (i);

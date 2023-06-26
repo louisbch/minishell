@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:32:41 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/06/23 17:00:45 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:37:31 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int ac, char **av, char **envp)
 	t_global	global;
 
 	(void)av;
-	g_signal.exit = 0;
+	g_signal.exit = -2;
 	if (ac != 1)
 		return (0);
 	set_signals();

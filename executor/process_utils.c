@@ -6,7 +6,7 @@
 /*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:24:39 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/06/23 13:51:10 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/26 12:19:36 by mcourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	wait_child(pid_t *id, t_global *global)
 	{
 		waitpid(id[i], &ret, 0);
 		i++;
+		if (WIFEXITED(ret))
+			g_signal.val = WEXITSTATUS(ret);
 	}
 }
 
