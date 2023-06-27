@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcourtin <mcourtin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbouchon <lbouchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:36:17 by lbouchon          #+#    #+#             */
-/*   Updated: 2023/06/26 11:59:16 by mcourtin         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:20:55 by lbouchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	get_exit_code(char *s)
 		printf("exit: %s: numeric argument required\n", s);
 		return (255);
 	}
+	i = ft_atoi(s);
 	i = i << 24;
 	i = i >> 24;
 	return (i);
